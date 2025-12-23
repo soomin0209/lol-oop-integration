@@ -6,6 +6,7 @@ public abstract class Champion {
     private int hp;
     private int attackDamage;
     private int defense;
+    private static int createdCount = 0;
 
     // 생성자
     public Champion(String name, int hp, int attackDamage, int defense) {
@@ -14,6 +15,7 @@ public abstract class Champion {
         this.level = 1;
         this.attackDamage = attackDamage;
         this.defense = defense;
+        createdCount++; // Champion 생성 시 createdCount 증가
     }
 
     public String getName() {
@@ -51,9 +53,13 @@ public abstract class Champion {
     }
 
     public void levelUp() {
-        level++;
-        System.out.println(name + " 레벨업!");
-        System.out.println("(현재 레벨: " + level + ")");
+        if (level >= GameConstants.MAX_LEVEL) {
+            System.out.println(name + "이(가) 이미 최대 레벨입니다");
+        } else {
+            level++;
+            System.out.println(name + " 레벨업!");
+            System.out.println("(현재 레벨: " + level + ")");
+        }
     }
 
     // 추상 메서드
