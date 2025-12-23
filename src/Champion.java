@@ -16,6 +16,26 @@ public abstract class Champion {
         this.defense = defense;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getAttackDamage() {
+        return attackDamage;
+    }
+
+    public int getDefense() {
+        return defense;
+    }
+
+    public void setAttackDamage(int attackDamage) {
+        this.attackDamage = attackDamage;
+    }
+
+    public void setDefense(int defense) {
+        this.defense = defense;
+    }
+
     // 공통 메서드
     public void basicAttack(Champion target) {
         target.takeDamage(attackDamage);
@@ -37,5 +57,5 @@ public abstract class Champion {
     }
 
     // 추상 메서드
-    public abstract void useQ();
+    public abstract void useQ(Champion target);
 }
