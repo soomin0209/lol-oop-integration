@@ -11,6 +11,15 @@ public class Main {
         Champion jinx = new Jinx("징크스");
         Champion ahri = new Ahri("아리");
 
+        System.out.println("\n🧙 생성된 챔피언: ");
+        System.out.println(garen.getName() + " - " + garen.getType().getTypeName());
+        System.out.println(jinx.getName() + " - " + jinx.getType().getTypeName());
+        System.out.println(ahri.getName() + " - " + ahri.getType().getTypeName());
+
+        System.out.println("\n👥 총 챔피언 수: " + Champion.getCreatedCount());
+        System.out.println("⭐ 최대 레벨: " + GameConstants.MAX_LEVEL);
+        System.out.println("⏱️ 기본 CDR: " + GameConstants.BASE_CDR);
+
         // 챔피언 Pool 생성
         ChampionPool pool = new ChampionPool();
         pool.addChampion(garen);

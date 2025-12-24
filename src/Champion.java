@@ -10,14 +10,16 @@ public abstract class Champion {
     private int defense;
     private static int createdCount = 0;
     private Random random = new Random();
+    private ChampionType type;
 
     // 생성자
-    public Champion(String name, int hp, int attackDamage, int defense) {
+    public Champion(String name, int hp, int attackDamage, int defense, ChampionType type) {
         this.name = name;
         this.hp = hp;
         this.level = 1;
         this.attackDamage = attackDamage;
         this.defense = defense;
+        this.type = type;
         createdCount++; // Champion 생성 시 createdCount 증가
     }
 
@@ -35,6 +37,14 @@ public abstract class Champion {
 
     public int getDefense() {
         return defense;
+    }
+
+    public ChampionType getType() {
+        return type;
+    }
+
+    public static int getCreatedCount() {
+        return createdCount;
     }
 
     public void setAttackDamage(int attackDamage) {
@@ -82,6 +92,9 @@ public abstract class Champion {
             System.out.println(name + " 이(가) 이미 최대 레벨입니다");
         } else {
             level++;
+            hp += 120;
+            attackDamage += 5;
+            defense += 5;
             System.out.println(name + " 레벨업!");
             System.out.println("(현재 레벨: " + level + ")");
         }

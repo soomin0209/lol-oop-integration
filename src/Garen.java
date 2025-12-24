@@ -1,7 +1,7 @@
 public class Garen extends Champion {
 
     public Garen(String name) {
-        super(name, 690, 69, 38);
+        super(name, 690, 69, 38, ChampionType.TANK);
     }
 
     @Override

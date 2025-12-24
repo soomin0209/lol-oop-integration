@@ -3,7 +3,7 @@ public class Ahri extends Champion implements ManaUser {
     private int mana;
 
     public Ahri(String name) {
-        super(name, 590, 53, 21);
+        super(name, 590, 53, 21, ChampionType.MAGE);
         this.mana = 418;
     }
 

@@ -3,7 +3,7 @@ public class Jinx extends Champion implements ManaUser {
     private int mana;
 
     public Jinx(String name) {
-        super(name, 630, 59, 26);
+        super(name, 630, 59, 26, ChampionType.MARKSMAN);
         this.mana = 260;
     }
 

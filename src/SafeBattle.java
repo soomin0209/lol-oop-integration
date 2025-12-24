@@ -17,7 +17,7 @@ public class SafeBattle {
 
     public static void gameOver(Champion c1, Champion c2) {
 
-        System.out.println("\n===== 전투 종료 =====");
+        System.out.println("===== 전투 종료 =====");
         System.out.println(c1);
         System.out.println(c2);
 
