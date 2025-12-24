@@ -10,7 +10,7 @@ public class SafeBattle {
 
             c1.useQ(c2);
             c2.useQ(c1);
-        } catch (DeadChampionActionException e) {
+        } catch (DeadChampionActionException | InsufficientManaException e) {
             System.out.println("⚠ 전투 종료 (예외 발생): " + e.getMessage());
         }
     }
