@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public abstract class Champion {
 
     // 공통 필드
@@ -7,6 +9,7 @@ public abstract class Champion {
     private int attackDamage;
     private int defense;
     private static int createdCount = 0;
+    private Random random = new Random();
 
     // 생성자
     public Champion(String name, int hp, int attackDamage, int defense) {
@@ -47,8 +50,17 @@ public abstract class Champion {
         checkAlive();
         target.checkAlive();
 
+        int randomDamage = attackDamage;
+        int minDamage = (int)(attackDamage * 1.5);  // 1.5배
+        int maxDamage = attackDamage * 2;   // 2배
+
         System.out.println(name + " → " + target.name + " 기본 공격");
-        target.takeDamage(attackDamage);
+        // 20%의 확률로 치명타 발동
+        if (random.nextDouble() < GameConstants.CRITICAL_CHANCE) {
+            randomDamage = random.nextInt(maxDamage - minDamage + 1) + minDamage;
+            System.out.println("치명타 " + randomDamage + "!");
+        }
+        target.takeDamage(randomDamage);
     }
 
     public void takeDamage(int damage) {
