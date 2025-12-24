@@ -1,3 +1,4 @@
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -12,5 +13,9 @@ public class ChampionPool {
 
     public Optional<Champion> find(String name) {
         return Optional.ofNullable(pool.get(name));
+    }
+
+    public Collection<Champion> getAll() {
+        return pool.values();
     }
 }

@@ -1,21 +1,35 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 public class Main {
     public static void main(String[] args) {
+
+        System.out.println("📢 소환사의 협곡에 오신 것을 환영합니다 📢");
 
         Champion garen = new Garen("가렌");
         Champion jinx = new Jinx("징크스");
         Champion ahri = new Ahri("아리");
 
+        // 챔피언 Pool 생성
         ChampionPool pool = new ChampionPool();
         pool.addChampion(garen);
         pool.addChampion(jinx);
         pool.addChampion(ahri);
 
-        pool.find("가렌")
-                .ifPresentOrElse(
-                        c -> System.out.println(c),
-                        () -> System.out.println("존재하지 않는 챔피언입니다.")
-                );
+        // 랜덤 선택으로 2명 선택
+        Random random = new Random();
+        List<Champion> poolList = new ArrayList<>(pool.getAll());
+        Champion c1 = poolList.get(random.nextInt(poolList.size()));
+        Champion c2;
+        do {
+            c2 = poolList.get(random.nextInt(poolList.size()));
+        } while (c1 == c2);
 
-        SafeBattle.duel(jinx, ahri);
+        // 안전 전투(SafeBattle) 진행
+        SafeBattle.duel(c1, c2);
+
+        // 승패 또는 전투 종료 메시지 출력
+        SafeBattle.gameOver(c1, c2);
     }
 }

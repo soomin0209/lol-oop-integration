@@ -10,7 +10,7 @@ public class Garen extends Champion {
         target.checkAlive();
 
         System.out.println(getName() + "의 결정타!(Q)");
-        System.out.println("보너스 공격력 20\n");
+        System.out.println("보너스 공격력 20");
         target.takeDamage(getAttackDamage() + 20);
     }
 }
