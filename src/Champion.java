@@ -40,21 +40,30 @@ public abstract class Champion {
 
     // 공통 메서드
     public void basicAttack(Champion target) {
-        target.takeDamage(attackDamage);
+        checkAlive();
+        target.checkAlive();
+
         System.out.println(name + " → " + target.name + " 기본 공격");
+        target.takeDamage(attackDamage);
     }
 
     public void takeDamage(int damage) {
         int actualDamage = damage - defense;
         if (actualDamage < 0) actualDamage = 0;
         hp -= actualDamage;
-        System.out.println(name + "이(가) " + actualDamage + " 피해를 입음");
-        System.out.println("(남은 HP: " + hp + ")");
+        System.out.println(name + " 이(가) " + actualDamage + " 피해를 입음");
+        if (hp <= 0) {
+            hp = 0;
+            System.out.println(name + " 이(가) 사망했습니다!");
+        }
+        System.out.println("(남은 HP: " + hp + ")\n");
     }
 
     public void levelUp() {
+        checkAlive();
+
         if (level >= GameConstants.MAX_LEVEL) {
-            System.out.println(name + "이(가) 이미 최대 레벨입니다");
+            System.out.println(name + " 이(가) 이미 최대 레벨입니다");
         } else {
             level++;
             System.out.println(name + " 레벨업!");
@@ -62,6 +71,21 @@ public abstract class Champion {
         }
     }
 
+    protected void checkAlive() {
+        if (hp <= 0) {
+            throw new DeadChampionActionException(name + " 은(는) 이미 사망했습니다!");
+        }
+    }
+
     // 추상 메서드
     public abstract void useQ(Champion target);
+
+    @Override
+    public String toString() {
+        return "이름: " + name +
+                ", 레벨: " + level +
+                ", 체력: " + hp +
+                ", 공격력: " + attackDamage +
+                ", 방어력: " + defense;
+    }
 }

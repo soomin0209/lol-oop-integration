@@ -6,6 +6,9 @@ public class Ahri extends Champion {
 
     @Override
     public void useQ(Champion target) {
+        checkAlive();
+        target.checkAlive();
+
         System.out.println(getName() + "의 현혹의 구슬!(Q)");
         target.takeDamage(80);
     }

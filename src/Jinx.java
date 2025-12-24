@@ -6,6 +6,8 @@ public class Jinx extends Champion {
 
     @Override
     public void useQ(Champion target) {
+        checkAlive();
+
         System.out.println(getName() + "의 휘릭휘릭!(Q)");
         System.out.println("공격력 15 증가, 방어력 5 감소");
         setAttackDamage(getAttackDamage() + 15);
