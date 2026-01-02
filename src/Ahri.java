@@ -17,6 +17,11 @@ public class Ahri extends Champion implements ManaUser {
         this.mana = mana;
     }
 
+    public void consumeMana(int amount) {
+        setMana(getMana() - amount);
+        if (getMana() < 0) setMana(0);
+    }
+
     @Override
     public void useQ(Champion target) {
         checkAlive();
